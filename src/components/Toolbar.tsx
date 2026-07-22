@@ -1,4 +1,4 @@
-import { Bell, BellOff, Moon, RefreshCw, Sun, DownloadCloud } from "lucide-react";
+import { Bell, BellOff, Moon, RefreshCw, Sun, DownloadCloud, Info } from "lucide-react";
 
 /** GitHub repo URL — update after creating the repo. */
 export const GITHUB_REPO = "https://github.com/mienetic/toolpulse";
@@ -22,6 +22,7 @@ interface ToolbarProps {
   /** When an update is available, show a badge on the refresh button. */
   updateAvailable?: boolean;
   onUpdate?: () => void;
+  onAbout?: () => void;
 }
 
 export function Toolbar({
@@ -33,6 +34,7 @@ export function Toolbar({
   onToggleNotifications,
   updateAvailable,
   onUpdate,
+  onAbout,
 }: ToolbarProps) {
   return (
     <div className="toolbar">
@@ -46,6 +48,13 @@ export function Toolbar({
         )}
       </div>
       <div className="toolbar__actions">
+        <button
+          className="btn-icon"
+          title="About Toolpulse"
+          onClick={onAbout}
+        >
+          <Info size={16} />
+        </button>
         <a
           className="btn-icon"
           href={GITHUB_REPO}

@@ -12,6 +12,7 @@ import { FiltersBar, applyFilters, type ToolFilters } from "./components/Filters
 import { TerminalPanel } from "./components/TerminalPanel";
 import { ConfirmDialog } from "./components/ConfirmDialog";
 import { ErrorBoundary } from "./components/ErrorBoundary";
+import { AboutDialog } from "./components/AboutDialog";
 import { useTools } from "./hooks/useTools";
 import { useTerminalRun } from "./hooks/useTerminalRun";
 import { useProjectScan } from "./hooks/useProjectScan";
@@ -43,6 +44,7 @@ function App() {
 
   // Auto-updater: check once on mount (silent), surface a badge when available.
   const [updateVersion, setUpdateVersion] = useState<string | null>(null);
+  const [aboutOpen, setAboutOpen] = useState(false);
   useEffect(() => {
     if (!api.isTauri) return;
     api
@@ -153,6 +155,7 @@ function App() {
         onToggleNotifications={() => setNotificationsOn((v) => !v)}
         updateAvailable={updateVersion !== null}
         onUpdate={installUpdate}
+        onAbout={() => setAboutOpen(true)}
       />
 
       <Dashboard summary={summary} lastChecked={lastChecked} loading={loading} />
@@ -290,6 +293,14 @@ function App() {
         detail={run.pending?.detail}
         onConfirm={run.confirm}
         onCancel={run.cancel}
+      />
+      <AboutDialog
+        open={aboutOpen}
+        onClose={() => setAboutOpen(false)}
+        appVersion="0.1.0"
+        updateAvailable={updateVersion !== null}
+        updateVersion={updateVersion}
+        onUpdate={installUpdate}
       />
     </div>
     </ErrorBoundary>
