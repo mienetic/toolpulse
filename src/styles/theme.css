@@ -1,0 +1,76 @@
+/* Theme variables. Dark is the default; light overrides via [data-theme="light"]. */
+
+:root,
+[data-theme="dark"] {
+  --bg: #0b0e14;
+  --bg-elevated: #131826;
+  --bg-card: #161c2c;
+  --bg-card-hover: #1b2236;
+  --border: #232c42;
+  --border-strong: #2f3a55;
+  --text: #e6ebf5;
+  --text-muted: #8a94ad;
+  --text-dim: #5b667f;
+  --accent: #6aa6ff;
+  --accent-dim: #2a3a5e;
+  --green: #4ade80;
+  --yellow: #facc15;
+  --red: #f87171;
+  --blue: #60a5fa;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+
+[data-theme="light"] {
+  --bg: #f5f7fb;
+  --bg-elevated: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f0f3f9;
+  --border: #e1e6f0;
+  --border-strong: #cbd3e2;
+  --text: #1a2233;
+  --text-muted: #5b667f;
+  --text-dim: #8a94ad;
+  --accent: #2563eb;
+  --accent-dim: #dbe7ff;
+  --green: #16a34a;
+  --yellow: #ca8a04;
+  --red: #dc2626;
+  --blue: #2563eb;
+  --shadow: 0 6px 18px rgba(20, 30, 60, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto,
+    Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}

@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  html, body { margin: 0; padding: 0; background: transparent; }
+  body { width: 1024px; height: 1024px; }
+  svg { display: block; }
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <!-- Background gradient: deep blue → teal, matching the dark theme. -->
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="55%" stop-color="#0b1326"/>
+      <stop offset="100%" stop-color="#0a1f1a"/>
+    </linearGradient>
+    <!-- Accent gradient for the pulse wave: cyan → green. -->
+    <linearGradient id="pulse" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="55%" stop-color="#4ade80"/>
+      <stop offset="100%" stop-color="#a3e635"/>
+    </linearGradient>
+    <!-- Glow filter for the wave. -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Soft inner shadow for depth on the disc. -->
+    <radialGradient id="vignette" cx="50%" cy="40%" r="75%">
+      <stop offset="60%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.35"/>
+    </radialGradient>
+    <!-- Rounded square clip (macOS Big Sur style app icon shape). -->
+    <clipPath id="squircle">
+      <rect x="0" y="0" width="1024" height="1024" rx="228" ry="228"/>
+    </clipPath>
+  </defs>
+
+  <!-- Squircle background. -->
+  <g clip-path="url(#squircle)">
+    <rect x="0" y="0" width="1024" height="1024" fill="url(#bg)"/>
+    <rect x="0" y="0" width="1024" height="1024" fill="url(#vignette)"/>
+
+    <!-- Subtle grid of "version dots" behind the wave — evokes the tool grid. -->
+    <g fill="#1e293b" opacity="0.55">
+      <circle cx="300" cy="320" r="10"/>
+      <circle cx="420" cy="320" r="10"/>
+      <circle cx="540" cy="320" r="10"/>
+      <circle cx="660" cy="320" r="10"/>
+      <circle cx="300" cy="440" r="10"/>
+      <circle cx="420" cy="440" r="10"/>
+      <circle cx="540" cy="440" r="10"/>
+      <circle cx="660" cy="440" r="10"/>
+      <circle cx="300" cy="620" r="10"/>
+      <circle cx="660" cy="620" r="10"/>
+    </g>
+
+    <!-- The pulse wave: a heartbeat-style path with a spike, drawn with glow. -->
+    <g filter="url(#glow)">
+      <path
+        d="M 230 520
+           L 360 520
+           L 420 520
+           L 470 360
+           L 540 660
+           L 600 520
+           L 660 520
+           L 720 520
+           L 800 520"
+        fill="none"
+        stroke="url(#pulse)"
+        stroke-width="26"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </g>
+
+    <!-- Bright nodes at the key points of the wave. -->
+    <g>
+      <circle cx="470" cy="360" r="20" fill="#4ade80"/>
+      <circle cx="540" cy="660" r="20" fill="#38bdf8"/>
+      <circle cx="470" cy="360" r="9" fill="#ecfdf5"/>
+      <circle cx="540" cy="660" r="9" fill="#ecfeff"/>
+    </g>
+
+    <!-- Top-left subtle highlight (glassy reflection). -->
+    <ellipse cx="380" cy="240" rx="320" ry="150" fill="#ffffff" opacity="0.04"/>
+  </g>
+
+  <!-- Squircle border for definition. -->
+  <rect x="1.5" y="1.5" width="1021" height="1021" rx="227" ry="227"
+        fill="none" stroke="#1e293b" stroke-width="3" opacity="0.6"/>
+</svg>
+</body>
+</html>
