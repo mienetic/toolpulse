@@ -14,7 +14,7 @@
       "endpoints": [
         "https://github.com/mienetic/toolpulse/releases/latest/download/latest.json"
       ],
-      "pubkey": "REPLACE_WITH_SIGNING_KEY"
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDM4RDNFMTVFM0JDRkNEMUIKUldRYnpjODdYdUhUT0xib2lQV1I1T1RPeFVzdll6dzRVdExabG1nMU9kMDdQQVBEZ1kwd3paaXYK"
     }
   },
   "app": {
