@@ -81,14 +81,22 @@ Built with **Tauri 2 + React + Rust**. Cross-platform, fast, and open-source.
 ## 🚀 Getting started
 
 ### Prerequisites
-- [Node.js](https://nodejs.org/) 20+
-- [Rust](https://www.rust-lang.org/) stable — `rustup update stable`
-- [Tauri 2 prerequisites](https://v2.tauri.app/start/prerequisites/)
+- [Node.js](https://nodejs.org/) 20+ (includes npm)
+- [Rust](https://www.rust-lang.org/) stable — install with [rustup](https://rustup.rs/) and update with `rustup update stable`
+- [Tauri 2 system dependencies](https://v2.tauri.app/start/prerequisites/) for your operating system
 
 ### Run in development
 ```bash
-npm install
+git clone https://github.com/mienetic/toolpulse.git
+cd toolpulse
+npm ci
 npm run tauri dev
+```
+
+### Validate your changes
+```bash
+npx tsc --noEmit
+cargo check --manifest-path src-tauri/Cargo.toml
 ```
 
 ### Build a production bundle
